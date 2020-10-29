@@ -26,7 +26,8 @@ jobs:
     - task: run-ui-tests
       file: source/pipeline/tasks/cypress.yaml
       params:
-        SPEC: cypress/integration/p1.publishers.spec.ts
+        CYPRESS_PUBLISHER_USERNAME: ((smoke-tests.publisher.username))
+        CYPRESS_PUBLISHER_PASSWORD: ((smoke-tests.publisher.password))
       on_failure: *upload_media
       ensure:
         <<: *upload_metrics

@@ -18,7 +18,8 @@ run:
   path: source/pipeline/scripts/cypress
 
 params:
-  SPEC:
+  CYPRESS_PUBLISHER_USERNAME:
+  CYPRESS_PUBLISHER_PASSWORD:
 
 caches:
 - path: ../../../root/.cache
