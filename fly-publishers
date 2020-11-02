@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -e
+
+cwd="$(cd "$(dirname "$0")" && pwd)"
+
+CYPRESS_PUBLISHER_USERNAME="$(bo show credential concourse-main smoke-tests.publisher username)" \
+CYPRESS_PUBLISHER_PASSWORD="$(bo show credential concourse-main smoke-tests.publisher password)" \
+fly --target ci \
+    execute \
+    --config "$cwd/pipeline/tasks/publishers.yaml" \
+    --input source="$cwd" \
+    --output test-results=test-results

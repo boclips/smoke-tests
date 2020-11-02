@@ -58,6 +58,14 @@ jobs:
     ensure:
       <<: *upload_metrics
       put: p2-api-metrics
+  - task: run-publisher-ui-tests
+    file: source/pipeline/tasks/publishers.yaml
+    params:
+      PUBLISHER_USERNAME_USERNAME: ((smoke-tests.publisher.username))
+      PUBLISHER_PASSWORD_PASSWORD: ((smoke-tests.publisher.password))
+    ensure:
+      <<: *upload_metrics
+      put: p1-ui-metrics
 
 resources:
 - name: smoke-tests

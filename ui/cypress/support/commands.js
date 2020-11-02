@@ -25,3 +25,8 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 import '@testing-library/cypress/add-commands';
 
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+    console.log(err);
+    return false;
+})
